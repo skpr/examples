@@ -1,0 +1,12 @@
+size: "small"
+
+ingress:
+  cache:
+    policy: basic
+  proxy:
+    api:
+      path: /api*
+      target:
+        project:
+          name: elasticsearch
+          environment: prod

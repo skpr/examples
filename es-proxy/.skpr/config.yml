@@ -1,0 +1,3 @@
+project: elasticsearch
+
+cluster: cluster.test.skpr.io

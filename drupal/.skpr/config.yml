@@ -1,0 +1,3 @@
+project: drupal
+
+cluster: cluster.test.skpr.io

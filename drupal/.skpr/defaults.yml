@@ -1,0 +1,6 @@
+size: "small"
+
+cron:
+  drush:
+    command:  "drush cron"
+    schedule: "@hourly"

@@ -1,0 +1,5 @@
+size: "small"
+
+ingress:
+  cache:
+    policy: basic # @todo, Will be the default in a future Skpr release

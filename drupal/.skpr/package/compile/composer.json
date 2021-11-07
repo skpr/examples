@@ -1,0 +1,69 @@
+{
+  "name": "skpr/drupal-example",
+  "description": "Project template for Drupal 9 projects with a relocated document root",
+  "type": "project",
+  "license": "GPL-2.0-or-later",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  ],
+  "require": {
+    "composer/installers": "^1.9",
+    "drupal/core-composer-scaffold": "^9.1",
+    "drupal/core-project-message": "^9.1",
+    "drupal/core-recommended": "^9.1",
+    "drupal/elasticsearch_connector": "^7.0@dev",
+    "drupal/prometheus_exporter": "^1.0@beta",
+    "drupal/prometheus_webform": "1.0.x-dev",
+    "drupal/search_api": "^1.18",
+    "drush/drush": "^10",
+    "skpr/config": "^2.0-beta2"
+  },
+  "conflict": {
+    "drupal/drupal": "*"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "bin-dir": "bin/",
+    "sort-packages": true
+  },
+  "extra": {
+    "drupal-scaffold": {
+      "locations": {
+        "web-root": "app/"
+      }
+    },
+    "installer-paths": {
+      "app/core": [
+        "type:drupal-core"
+      ],
+      "app/libraries/{$name}": [
+        "type:drupal-library"
+      ],
+      "app/modules/contrib/{$name}": [
+        "type:drupal-module"
+      ],
+      "app/profiles/contrib/{$name}": [
+        "type:drupal-profile"
+      ],
+      "app/themes/contrib/{$name}": [
+        "type:drupal-theme"
+      ],
+      "drush/Commands/contrib/{$name}": [
+        "type:drupal-drush"
+      ],
+      "app/modules/custom/{$name}": [
+        "type:drupal-custom-module"
+      ],
+      "app/profiles/custom/{$name}": [
+        "type:drupal-custom-profile"
+      ],
+      "app/themes/custom/{$name}": [
+        "type:drupal-custom-theme"
+      ]
+    }
+  }
+}
