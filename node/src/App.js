@@ -24,11 +24,11 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="page page__container">
+      <div className="page page__container">
+        <article className="section__content">
           <h2>Search Results</h2>
           <Results results={this.state.results}/>
-        </div>
+        </article>
       </div>
     );
   }
