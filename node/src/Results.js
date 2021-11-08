@@ -2,11 +2,11 @@ import React from 'react';
 
 export default function Results (props) {
   return (
-    <div class="grid results">
+    <div className="grid results">
       {props.results.map(result =>
-        <div class="card grid__col grid--4-col card--green">
-          <div class="card__tags">{result._source.type}</div>
-          <div class="card__content">
+        <div className="card grid__col grid--4-col card--green" key={result._source.title}>
+          <div className="card__tags">{result._source.type}</div>
+          <div className="card__content">
             <h2>
               <span>{result._source.title}</span>
             </h2>
