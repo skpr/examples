@@ -36,6 +36,7 @@
     ]
   },
   "devDependencies": {
+    "@codedrop/background": "^0.1.4",
     "@codedrop/base": "^0.1.10",
     "@codedrop/card": "^0.1.15",
     "@codedrop/layout": "^0.1.6"

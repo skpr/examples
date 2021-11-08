@@ -1,4 +1,26 @@
 @import '~@codedrop/base/dist/base.css';
+@import '~@codedrop/background/dist/background.css';
 @import '~@codedrop/layout/dist/layout.css';
 @import '~@codedrop/typography/dist/typography.css';
 @import '~@codedrop/card/dist/card.css';
+
+.tag {
+  position: relative;
+  display: inline-block;
+  padding: .5rem;
+  font-size: .875rem;
+  border-radius: 3px;
+  line-height: 1;
+}
+
+.tag--article {
+  background-color: #5fdd9d;
+}
+
+.tag--page {
+  background-color: #1976d2;
+}
+
+.tag--recipe {
+  background-color: #f8df3e;
+}

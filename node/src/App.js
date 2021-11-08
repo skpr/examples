@@ -24,12 +24,14 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className="page page__container">
-        <article className="section__content">
-          <h2>Search Results</h2>
-          <Results results={this.state.results}/>
-        </article>
-      </div>
+      <main>
+        <section class="section background--firework section--top-l">
+          <article className="section__content">
+            <h1 class="heading--special page-title">Search Results</h1>
+            <Results results={this.state.results}/>
+          </article>
+        </section>
+      </main>
     );
   }
 
