@@ -17,36 +17,33 @@ services:
       - data:/data
 
   php-fpm:
-    image: skpr/php-fpm:8.0-dev-v2-latest
+    build: ./docker/compose/php-fpm
     network_mode: service:nginx
-    volumes:
-      - data:/data
     environment:
       - PHP_IDE_CONFIG=serverName=localhost
+    volumes:
+      - ./:/data
 
   ##################
   # CLI
   ##################
 
   php-cli:
-    image: skpr/php-cli:8.0-dev-v2-latest
+    build: ./docker/compose/php-cli
+    command: /bin/bash -c "sleep infinity"
     network_mode: service:nginx
+    environment:
+      - PHP_MEMORY_LIMIT=512M
     volumes:
-      - data:/data
-
-  node:
-    image: skpr/node:16-v2-latest
-    network_mode: service:nginx
-    volumes:
-      - data:/data
+      - ./:/data
 
   ##################
   # Databases
   ##################
 
   mysql-default:
-    # For "skpr2 mysql pull dev" to get the latest image.
-    image: xxxxxxxxx.dkr.ecr.ap-southeast-2.amazonaws.com/xxxxxxxx/mysql:dev-default-latest
+    # For "skpr mysql pull dev" to get the latest image.
+    image: xxxxxxxxx.dkr.ecr.ap-southeast-2.amazonaws.com/skpr-project/mysql:dev-default-latest
     network_mode: service:nginx
 
   ##################
@@ -57,11 +54,3 @@ services:
     image: mailhog/mailhog
     ports:
       - 8025:8025
-
-volumes:
-  data:
-    driver: local
-    driver_opts:
-      o: bind
-      type: none
-      device: ${PWD}
