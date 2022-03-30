@@ -17,7 +17,7 @@ services:
       - data:/data
 
   php-fpm:
-    build: ./docker/compose/php-fpm
+    image: skpr/php-fpm:8.0-dev-v2-latest
     network_mode: service:nginx
     environment:
       - PHP_IDE_CONFIG=serverName=localhost
@@ -29,7 +29,7 @@ services:
   ##################
 
   php-cli:
-    build: ./docker/compose/php-cli
+    image: skpr/php-cli:8.0-dev-v2-latest
     command: /bin/bash -c "sleep infinity"
     network_mode: service:nginx
     environment:
