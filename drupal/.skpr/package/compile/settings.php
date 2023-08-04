@@ -43,3 +43,5 @@ $settings['php_storage']['twig'] = [
 ];
 
 $settings['config_sync_directory'] = DRUPAL_ROOT . '/../config-export';
+
+$settings['deployment_identifier'] = getenv('SKPR_VERSION') ?? \Drupal::VERSION;
