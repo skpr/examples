@@ -1,6 +1,3 @@
-size: "small"
+type: drupal
 
-cron:
-  drush:
-    command:  "drush cron"
-    schedule: "@hourly"
+size: "small"

@@ -15,8 +15,6 @@
     "drupal/core-project-message": "^9.1",
     "drupal/core-recommended": "^9.1",
     "drupal/elasticsearch_connector": "^7.0@dev",
-    "drupal/prometheus_exporter": "^1.0@beta",
-    "drupal/prometheus_webform": "1.0.x-dev",
     "drupal/search_api": "^1.18",
     "drush/drush": "^10",
     "skpr/config": "^2.0-beta2"
