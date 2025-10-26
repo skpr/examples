@@ -20,17 +20,17 @@ $databases['default']['default'] = array(
 
 $config['cron_safe_threshold'] = '0';
 $settings['file_public_path'] = 'sites/default/files';
-$config['system.file']['path']['temporary'] = '/mnt/temporary';
-$settings['file_private_path'] = '/mnt/private';
+$config['system.file']['path']['temporary'] = $skpr->get('mount.temporary', '/tmp');;
+$settings['file_private_path'] = $skpr->get('mount.private', '/data/app/sites/default/files/private');;
 
-$settings['hash_salt'] = !empty($settings['hash_salt']) ? $settings['hash_salt'] : 'xxxxxxxxxxxxxxxxxxxx';
+$settings['hash_salt'] = $skpr->get('drupal.hash_salt', 'xxxxxxxxxxxxxxxxxxxxxxx');
 
 $settings['trusted_host_patterns'][] = '^127\.0\.0\.1$';
 foreach ($skpr->hostNames() as $hostname) {
   $settings['trusted_host_patterns'][] = '^' . preg_quote($hostname) . '$';
 }
 
-$config['prometheus_exporter_token_access.settings']['access_token'] = $skpr->get('skpr.token') ?: '';
+$config['prometheus_exporter_token_access.settings']['access_token'] = $skpr->get('skpr.token', '');
 
 $config['elasticsearch_connector.cluster.default']['url'] = $skpr->get('elasticsearch.writer.endpoint', 'https://localhost:9200');
 $config['elasticsearch_connector.cluster.default']['options']['username'] = $skpr->get('elasticsearch.writer.username', 'admin');

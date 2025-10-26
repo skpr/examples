@@ -1,5 +1,5 @@
 ARG COMPILE_IMAGE=scratch
-FROM ${COMPILE_IMAGE} as build
+FROM ${COMPILE_IMAGE} AS build
 
-FROM skpr/nginx:1.x
+FROM skpr/nginx-drupal:v3-stable
 COPY --chown=skpr:skpr --from=build /data /data
