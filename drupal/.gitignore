@@ -1,0 +1,11 @@
+app/
+bin/
+composer.lock
+config-export/
+recipes/
+vendor/
+.editorconfig
+.gitattributes
+
+!app/sites/default/settings.php
+!app/sites/default/services.yml

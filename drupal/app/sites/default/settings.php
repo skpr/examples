@@ -13,8 +13,8 @@ $settings['allow_authorize_operations'] = FALSE;
 $databases['default']['default'] = array(
   'driver' => 'mysql',
   'database' => $skpr->get('mysql.default.database') ?: 'local',
-  'username' => $skpr->get('mysql.default.username') ?: 'drupal',
-  'password' => $skpr->get('mysql.default.password') ?: 'drupal',
+  'username' => $skpr->get('mysql.default.username') ?: 'local',
+  'password' => $skpr->get('mysql.default.password') ?: 'local',
   'host' => $skpr->get('mysql.default.proxy') ?: '127.0.0.1',
 );
 
