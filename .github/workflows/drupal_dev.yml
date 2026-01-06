@@ -7,17 +7,38 @@ on:
     paths:
       - 'drupal/**'
 
+env:
+  SKPR_USERNAME: ${{ secrets.SKPR_QA_USERNAME }}
+  SKPR_PASSWORD: ${{ secrets.SKPR_QA_PASSWORD }}
+
 concurrency:
   group: drupal-dev
   cancel-in-progress: true
 
 jobs:
   deploy:
-    uses: skpr/gh-workflows/.github/workflows/deploy.yml@main
-    secrets:
-      skpr_username: ${{ secrets.SKPR_QA_USERNAME }}
-      skpr_password: ${{ secrets.SKPR_QA_PASSWORD }}
-    with:
-      env: dev
-      suspend_cron: false
-      post_deploy: 'drush si core/recipes/standard'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./drupal
+    steps:
+      - name: ⬇️ Checkout Code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup skpr
+        uses: skpr/setup-action@v1
+
+      - name: Get version
+        id: version
+        run: |
+          version=$(git describe --tags --always)
+          echo "::notice:: Using version $version from git describe"
+          echo "version=$version" >> $GITHUB_OUTPUT
+
+      - name: 🚀 Deploy
+        run: skpr deploy dev ${{ steps.version.outputs.version }}
+
+      - name: 🧹 Post-deploy
+        run: skpr exec dev drush si core/recipes/standard
