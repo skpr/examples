@@ -49,7 +49,7 @@ services:
   # Services
   ##################
 
-  mailpit:
+  mail:
     image: axllent/mailpit
     ports:
       - 8025:8025
