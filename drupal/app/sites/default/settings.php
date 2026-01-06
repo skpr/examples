@@ -18,6 +18,8 @@ $databases['default']['default'] = array(
   'host' => $skpr->get('mysql.default.proxy') ?: '127.0.0.1',
 );
 
+$databases['default']['default']['pdo'][PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = false;
+
 $config['cron_safe_threshold'] = '0';
 $settings['file_public_path'] = 'sites/default/files';
 $config['system.file']['path']['temporary'] = $skpr->get('mount.temporary', '/tmp');;

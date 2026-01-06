@@ -6,6 +6,7 @@ recipes/
 vendor/
 .editorconfig
 .gitattributes
+.php/
 
 !app/sites/default/settings.php
 !app/sites/default/services.yml
