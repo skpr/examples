@@ -1,0 +1,23 @@
+name: Drupal Dev
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'drupal/**'
+
+concurrency:
+  group: drupal-dev
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    uses: skpr/gh-workflows/.github/workflows/deploy.yml@main
+    secrets:
+      skpr_username: ${{ secrets.SKPR_USERNAME }}
+      skpr_password: ${{ secrets.SKPR_PASSWORD }}
+    with:
+      env: dev
+      suspend_cron: false
+      post_deploy: 'drush si core/recipes/standard'
