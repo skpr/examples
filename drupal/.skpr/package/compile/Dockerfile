@@ -1,9 +1,9 @@
 FROM skpr/php-cli:8.3-v2-stable AS build
 
-ADD .skpr/package/compile/composer.json composer.json
-RUN composer install --prefer-dist
+ADD composer.json composer.json
+RUN composer install --prefer-dist --no-progress
 
-ADD .skpr/package/compile/settings.php app/sites/default/settings.php
-ADD .skpr/package/compile/services.yml app/sites/default/services.yml
+ADD app/sites/default/settings.php app/sites/default/settings.php
+ADD app/sites/default/services.yml app/sites/default/services.yml
 
-RUN mkdir /data/config-export
+RUN mkdir config-export
