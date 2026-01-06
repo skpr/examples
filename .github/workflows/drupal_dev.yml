@@ -40,6 +40,9 @@ jobs:
           echo "::notice:: Using version $version from git describe"
           echo "version=$version" >> $GITHUB_OUTPUT
 
+      - name: 📦 Package
+        run: skpr package ${{ steps.version.outputs.version }}
+
       - name: 🚀 Deploy
         run: skpr deploy dev ${{ steps.version.outputs.version }}
 
