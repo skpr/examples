@@ -30,6 +30,8 @@ jobs:
 
       - name: Setup skpr
         uses: skpr/setup-action@v1
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Get version
         id: version
