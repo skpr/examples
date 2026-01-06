@@ -25,8 +25,6 @@ jobs:
     steps:
       - name: ⬇️ Checkout Code
         uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
 
       - name: Setup skpr
         uses: skpr/setup-action@v1
@@ -36,7 +34,7 @@ jobs:
       - name: Get version
         id: version
         run: |
-          version=$(git describe --tags --always)
+          version=$(git rev-parse --short HEAD)
           echo "::notice:: Using version $version from git describe"
           echo "version=$version" >> $GITHUB_OUTPUT
 
@@ -47,4 +45,4 @@ jobs:
         run: skpr deploy dev ${{ steps.version.outputs.version }}
 
       - name: 🧹 Post-deploy
-        run: skpr exec dev drush si core/recipes/standard
+        run: skpr exec dev drush updb -y
