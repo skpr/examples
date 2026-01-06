@@ -1,12 +1,11 @@
 name: Drupal Dev
 
 on:
-  pull_request: ~
-#  push:
-#    branches:
-#      - update-drupal-example
-#    paths:
-#      - 'drupal/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'drupal/**'
 
 env:
   SKPR_USERNAME: ${{ secrets.SKPR_QA_USERNAME }}
