@@ -3,7 +3,7 @@ name: Drupal Dev
 on:
   push:
     branches:
-      - main
+      - update-drupal-example
     paths:
       - 'drupal/**'
 
@@ -15,8 +15,8 @@ jobs:
   deploy:
     uses: skpr/gh-workflows/.github/workflows/deploy.yml@main
     secrets:
-      skpr_username: ${{ secrets.SKPR_USERNAME }}
-      skpr_password: ${{ secrets.SKPR_PASSWORD }}
+      skpr_username: ${{ secrets.SKPR_QA_USERNAME }}
+      skpr_password: ${{ secrets.SKPR_QA_PASSWORD }}
     with:
       env: dev
       suspend_cron: false
