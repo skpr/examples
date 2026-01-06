@@ -1,5 +1,3 @@
-version: "3"
-
 services:
 
   ##################
@@ -7,7 +5,7 @@ services:
   ##################
 
   nginx:
-    image: skpr/nginx-drupal:dev-v2-latest
+    image: skpr/nginx-drupal:dev-v3-latest
     ports:
       - 8080:8080
       - 3306:3306
@@ -17,7 +15,7 @@ services:
       - ./:/data
 
   php-fpm:
-    image: skpr/php-fpm:8.0-dev-v2-latest
+    image: skpr/php-fpm:8.3-dev-v2-latest
     network_mode: service:nginx
     environment:
       - PHP_IDE_CONFIG=serverName=localhost
@@ -29,7 +27,7 @@ services:
   ##################
 
   php-cli:
-    image: skpr/php-cli:8.0-dev-v2-latest
+    image: skpr/php-cli:8.3-dev-v2-latest
     command: /bin/bash -c "sleep infinity"
     network_mode: service:nginx
     environment:
@@ -43,14 +41,15 @@ services:
 
   mysql-default:
     # For "skpr mysql pull dev" to get the latest image.
-    image: xxxxxxxxx.dkr.ecr.ap-southeast-2.amazonaws.com/skpr-project/mysql:dev-default-latest
+    # You can replace the environment variables here with hard-coded values.
+    image: ${ECR_ID:-xxxxxx}.dkr.ecr.ap-southeast-2.amazonaws.com/${SKPR_PROJECT:-skpr-project}/mysql/dev:default-latest
     network_mode: service:nginx
 
   ##################
   # Services
   ##################
 
-  mailhog:
-    image: mailhog/mailhog
+  mail:
+    image: axllent/mailpit
     ports:
       - 8025:8025

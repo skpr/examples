@@ -11,13 +11,13 @@
   ],
   "require": {
     "composer/installers": "^1.9",
-    "drupal/core-composer-scaffold": "^9.1",
-    "drupal/core-project-message": "^9.1",
-    "drupal/core-recommended": "^9.1",
-    "drupal/elasticsearch_connector": "^7.0@dev",
-    "drupal/search_api": "^1.18",
-    "drush/drush": "^10",
-    "skpr/config": "^2.0-beta2"
+    "drupal/core-composer-scaffold": "^11.2",
+    "drupal/core-project-message": "^11.2",
+    "drupal/core-recommended": "^11.2",
+    "drupal/search_api_opensearch": "^2.5",
+    "drupal/skpr_logs": "^1.0",
+    "drush/drush": "^13",
+    "skpr/config": "^3.0"
   },
   "conflict": {
     "drupal/drupal": "*"
@@ -30,7 +30,8 @@
     "allow-plugins": {
       "composer/installers": true,
       "drupal/core-composer-scaffold": true,
-      "drupal/core-project-message": true
+      "drupal/core-project-message": true,
+      "php-http/discovery": true
     }
   },
   "extra": {
