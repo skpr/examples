@@ -1,0 +1,44 @@
+name: PHP Dev
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'php/**'
+
+env:
+  SKPR_USERNAME: ${{ secrets.SKPR_QA_USERNAME }}
+  SKPR_PASSWORD: ${{ secrets.SKPR_QA_PASSWORD }}
+
+concurrency:
+  group: php-dev
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./php
+    steps:
+      - name: ⬇️ Checkout Code
+        uses: actions/checkout@v6
+
+      - name: Setup skpr
+        uses: skpr/setup-action@v1
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Get version
+        id: version
+        run: |
+          version=$(git rev-parse --short HEAD)
+          echo "::notice:: Using version $version from git describe"
+          echo "version=$version" >> $GITHUB_OUTPUT
+
+      - name: 📦 Package
+        run: skpr package ${{ steps.version.outputs.version }}
+
+      - name: 🚀 Deploy
+        run: skpr deploy dev ${{ steps.version.outputs.version }}

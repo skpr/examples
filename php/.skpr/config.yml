@@ -1,0 +1,3 @@
+project: php
+
+cluster: cluster.qa.skpr.io
