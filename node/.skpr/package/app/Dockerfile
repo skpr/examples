@@ -1,10 +1,10 @@
 ARG COMPILE_IMAGE=scratch
 FROM ${COMPILE_IMAGE} as build
 
-FROM skpr/node:16-1.x
+FROM skpr/node:24-v3-latest
 
 USER root
-RUN npm install -g serve
+RUN pnpm install -g serve
 USER skpr
 
 # Allows serve to run with read only containers.
