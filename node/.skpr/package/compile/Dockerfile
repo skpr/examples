@@ -1,4 +1,4 @@
-FROM skpr/node:16-1.x
+FROM skpr/node:24-v3-latest
 
 ADD --chown=skpr:skpr . /data
-RUN npm run build
+RUN pnpm run build

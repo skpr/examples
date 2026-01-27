@@ -9,7 +9,7 @@ services:
       - ./docker/compose/nginx/default.conf:/etc/nginx/conf.d/default.conf
 
   node:
-    image: skpr/node:16-1.x
+    image: skpr/node:dev-24-v3-latest
     network_mode: service:nginx
     volumes:
       - .:/data
