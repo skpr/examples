@@ -18,7 +18,12 @@ $databases['default']['default'] = array(
   'host' => $skpr->get('mysql.default.proxy') ?: '127.0.0.1',
 );
 
-$databases['default']['default']['pdo'][PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = false;
+if ($cert_path = $skpr->get('mysql.default.ca.crt')) {
+  $databases['default']['default']['pdo'][\PDO::MYSQL_ATTR_SSL_CA] = $cert_path;
+}
+else {
+  $databases['default']['default']['pdo'][\PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = FALSE;
+}
 
 $config['cron_safe_threshold'] = '0';
 $settings['file_public_path'] = 'sites/default/files';
