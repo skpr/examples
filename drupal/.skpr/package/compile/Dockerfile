@@ -1,4 +1,4 @@
-FROM skpr/php-cli:8.3-v2-stable AS build
+FROM skpr/php-cli:8.3-v2-latest AS build
 
 ADD composer.json composer.json
 RUN composer install --prefer-dist --no-progress
