@@ -1,0 +1,6 @@
+[env]
+# Shortcut for deploying to local development cluster.
+SKPR_API="localhost:50051?insecure=true"
+SKPR_SSH="localhost:30022"
+SKPR_USERNAME="local"
+SKPR_PASSWORD="local"
