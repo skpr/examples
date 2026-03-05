@@ -4,7 +4,30 @@ updates:
     directory: "/node"
     schedule:
       interval: weekly
+    commit-message:
+      prefix: "build"
+      include: "scope"
+    cooldown:
+      default-days: 1
     groups:
       pnpm-deps:
         patterns:
           - "*"
+
+  - package-ecosystem: npm
+    directory: "/payload"
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: "build"
+      include: "scope"
+    cooldown:
+      default-days: 1
+    groups:
+      pnpm-deps:
+        patterns:
+          - "*"
+    ignore:
+      - dependency-name: eslint
+        update-types: [ version-update:semver-major ]
+
