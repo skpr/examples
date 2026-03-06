@@ -1,0 +1,35 @@
+services:
+
+  ##################
+  # Web
+  ##################
+
+  nginx:
+    image: skpr/nginx-drupal:dev-v3-latest
+    ports:
+      - 8080:8080
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./:/data/app
+
+  php-fpm:
+    image: skpr/php-fpm:8.5-dev-v2-latest
+    network_mode: service:nginx
+    environment:
+      - PHP_IDE_CONFIG=serverName=localhost
+    volumes:
+      - ./:/data/app
+
+  ##################
+  # CLI
+  ##################
+
+  php-cli:
+    image: skpr/php-cli:8.5-dev-v2-latest
+    command: /bin/bash -c "sleep infinity"
+    network_mode: service:nginx
+    environment:
+      - PHP_MEMORY_LIMIT=512M
+    volumes:
+      - ./:/data/app
