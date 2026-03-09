@@ -2,6 +2,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
+# Set up the route handlers.
 use App\Route\Metrics;
 use App\Route\Headers;
 
