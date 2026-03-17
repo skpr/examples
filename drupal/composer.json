@@ -14,6 +14,7 @@
     "drupal/core-composer-scaffold": "^11.2",
     "drupal/core-project-message": "^11.2",
     "drupal/core-recommended": "^11.2",
+    "drupal/prometheus_exporter": "^2.0@beta",
     "drupal/search_api_opensearch": "^2.5",
     "drupal/skpr_logs": "^1.0",
     "drush/drush": "^13",
