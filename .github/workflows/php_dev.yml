@@ -8,7 +8,7 @@ on:
       - 'php/**'
 
 env:
-  SKPR_USERNAME: ${{ secrets.SKPR_QA_USERNAME }}
+  SKPR_USERNAME: ${{ vars.SKPR_QA_USERNAME }}
   SKPR_PASSWORD: ${{ secrets.SKPR_QA_PASSWORD }}
 
 concurrency:
@@ -22,7 +22,7 @@ jobs:
       run:
         working-directory: ./php
     steps:
-      - name: ⬇️ Checkout Code
+      - name: ⬇️  Checkout Code
         uses: actions/checkout@v6
 
       - name: Setup skpr
