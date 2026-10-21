@@ -17,4 +17,3 @@ switch ($uri_components['path']) {
     echo "Hello Skpr Developer!";
     return;
 }
-
