@@ -13,6 +13,11 @@ updates:
       pnpm-deps:
         patterns:
           - "*"
+        update-types: [ "minor", "patch" ]
+      pnpm-major-deps:
+        patterns:
+          - "*"
+        update-types: [ "major" ]
       pnpm-security-deps:
         applies-to: security-updates
         patterns: [ "*" ]
@@ -33,10 +38,14 @@ updates:
       pnpm-deps:
         patterns:
           - "*"
+        update-types: [ "minor", "patch" ]
+      pnpm-major-deps:
+        patterns:
+          - "*"
+        update-types: [ "major" ]
       pnpm-security-deps:
         applies-to: security-updates
         patterns: [ "*" ]
     ignore:
       - dependency-name: eslint
         update-types: [ version-update:semver-major ]
-
