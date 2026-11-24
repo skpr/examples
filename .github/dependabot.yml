@@ -4,11 +4,14 @@ updates:
     directory: "/node"
     schedule:
       interval: weekly
+      day: wednesday
+      time: "07:30"
+      timezone: "Australia/Sydney"
     commit-message:
       prefix: "build"
       include: "scope"
     cooldown:
-      default-days: 1
+      default-days: 2
     groups:
       pnpm-deps:
         patterns:
@@ -29,11 +32,14 @@ updates:
     directory: "/payload"
     schedule:
       interval: weekly
+      day: wednesday
+      time: "07:30"
+      timezone: "Australia/Sydney"
     commit-message:
       prefix: "build"
       include: "scope"
     cooldown:
-      default-days: 1
+      default-days: 2
     groups:
       pnpm-deps:
         patterns:
@@ -49,3 +55,26 @@ updates:
     ignore:
       - dependency-name: eslint
         update-types: [ version-update:semver-major ]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: wednesday
+      time: "07:30"
+      timezone: "Australia/Sydney"
+    commit-message:
+      prefix: "build"
+      include: "scope"
+    cooldown:
+      default-days: 2
+    groups:
+      github-actions-deps:
+        patterns: [ "*" ]
+        update-types: [ "minor", "patch" ]
+      github-actions-major-deps:
+        patterns: [ "*" ]
+        update-types: [ "major" ]
+      github-actions-security-deps:
+        applies-to: security-updates
+        patterns: [ "*" ]
