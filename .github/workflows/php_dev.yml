@@ -23,7 +23,7 @@ jobs:
         working-directory: ./php
     steps:
       - name: ⬇️  Checkout Code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup skpr
         uses: skpr/setup-action@v1
